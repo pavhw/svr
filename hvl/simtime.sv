@@ -239,6 +239,16 @@ package simtime;
         end
     endtask: checked_delay
 
+    //--------------------------------------------------------------------------
+    task wait_for_nba_region;
+        static int nba;
+        static int next_nba;
+
+        next_nba++;
+        nba <= next_nba;
+        @(nba);
+    endtask
+
     // Functions/tasks
     //***************************************************************
 endpackage: simtime
